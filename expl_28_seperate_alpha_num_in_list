@@ -1,33 +1,53 @@
 %{
-  #include <stdio.h>
-  char* numbers[100];
-  int num_count = 0;
-  char* words[100]; 
-  int word_count = 0;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+%}
+
+%option noyywrap
+
+%{
+#define MAX_LEN 100
+
+char alphabet_list[MAX_LEN];
+char number_list[MAX_LEN];
+int alpha_index = 0;
+int num_index = 0;
+
+void clear_lists() {
+    memset(alphabet_list, 0, MAX_LEN);
+    memset(number_list, 0, MAX_LEN);
+    alpha_index = 0;
+    num_index = 0;
+}
 %}
 
 %%
-[0-9]+ {numbers[num_count++] = yytext;
+[a-zA-Z] {
+    alphabet_list[alpha_index++] = yytext[0];
 }
-[a-zA-Z]+ {
-  words[word_count++] = yytext;
+[0-9]+ {
+    number_list[num_index++] = yytext[0];
 }
-printf("%s",yytext);
 . {
-  printf("Error: unexpected character '%c'\n", yytext[0]);
+    // Ignore other characters
 }
 %%
-int yywrap(){}
+
 int main() {
-  printf("enter the input");
-  yylex();
-  printf("Numbers:\n");
-  for (int i = 0; i < num_count; i++) {
-    printf("%s\n", numbers[i]);
-  }
-  printf("Words:\n");
-  for (int i = 0; i < word_count; i++) {
-    printf("%s\n", words[i]);
-  }
-  return 0;
+    clear_lists();
+    
+    printf("Enter a string: ");
+    yylex();
+    
+    printf("Alphabets: %s\n", alphabet_list);
+    printf("Numbers: %s\n", number_list);
+    
+    return 0;
 }
+
+
+/*OUTPUT:
+Enter a string: HELLO world Bye 1 23 45 67
+Alphabets: HELLO world Bye
+Numbers: 1 23 45 67 */
