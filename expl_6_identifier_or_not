@@ -28,7 +28,7 @@ C:\Users\malsr>gcc lex.yy.c
 
 C:\Users\malsr>a
 int a if a else b
-
+\
 int is Not a IDENTIFIER
 a is IDENTIFIER
 if is Not a IDENTIFIER
