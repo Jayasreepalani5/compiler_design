@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+bool is_valid_identifier(const char* str) {
+    if (strlen(str) == 0) {
+        return false;
+    }
+    if (!isalpha(str[0]) && str[0] != '_') {
+        return false;
+    }
+    for (int i = 1; str[i] != '\0'; i++) {
+        if (!isalnum(str[i]) && str[i] != '_') {
+            return false;
+        }
+    }
+    return true;
+}
+int main() {
+    const char* validIdentifier = "myVar123";
+    const char* invalidIdentifier = "123invalid";
+
+    if (is_valid_identifier(validIdentifier)) {
+        printf("%s is a valid identifier.\n", validIdentifier);
+    } else {
+        printf("%s is not a valid identifier.\n", validIdentifier);
+    }
+
+    if (is_valid_identifier(invalidIdentifier)) {
+        printf("%s is a valid identifier.\n", invalidIdentifier);
+    } else {
+        printf("%s is not a valid identifier.\n", invalidIdentifier);
+    }
+
+    return 0;
+}
+\\* output:
+myVar123 is a valid identifier.
+123invalid is not a valid identifier
+*//
