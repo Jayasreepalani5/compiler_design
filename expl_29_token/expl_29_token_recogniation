@@ -104,11 +104,12 @@ int main(){
    return (0);
 }
 
-/*OUTPUT:
+//*OUTPUT:
 The Program is : 'float x = a + 1b; ' All Tokens are :
 Valid keyword : 'float'
 Valid Identifier : 'x'
 Valid operator : '='
 Valid Identifier : 'a'
 Valid operator : '+'
-Invalid Identifier : '1b' */
+Invalid Identifier : '1b' 
+*//
