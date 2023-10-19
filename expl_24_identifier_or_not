@@ -1,0 +1,25 @@
+%{
+#include<stdio.h>
+%}
+%%
+if|else|while|int|switch|for|char { printf("\n%s is a KEYWORD", yytext);}
+[a-zA-Z0-9]+ { printf("\n%s is IDENTIFIER", yytext);}
+%%
+int yywrap( ){}
+int main()
+{
+	yylex();
+}
+
+\\*
+OUTPUT:
+C:\Users\LENOVA>set path=C:\Program Files (x86)\GnuWin32\bin
+C:\Users\LENOVA>flex keyide.l.txt
+C:\Users\LENOVA>set path=C:\MinGW\bin
+C:\Users\LENOVA>gcc lex.yy.c
+C:\Users\LENOVA>a
+int
+int is a KEYWORD
+main
+main is IDENTIFIER
+*\\
