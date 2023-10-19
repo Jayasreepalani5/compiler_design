@@ -1,0 +1,14 @@
+GRAMMAR is
+ E->E+E
+ E->E*E
+ E->(E)
+ E->id
+enter input string
+a+b=c
+stack    input   action
+
+$a       +b=c$  SHIFT->symbols
+$a+       b=c$  SHIFT->symbols
+$a+b       =c$  SHIFT->symbols
+$a+b=       c$  SHIFT->symbols
+$a+b=c       $  SHIFT->symbols
