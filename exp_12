@@ -1,8 +1,0 @@
-Enter Number of Production : 2
-Enter the grammar as E->BC|BD:
-S->iEts/iEtSeS/a
-E->b
-
- The grammer :: S->iEts/iEE->b is not left factoring.
-
- The grammer :: E->b is not left factoring.
